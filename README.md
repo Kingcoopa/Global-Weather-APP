@@ -7,7 +7,7 @@ This application was created with the purpose of giving the global traveler acce
 
 ## The Tech Used for the App
 
-The technologies I used to creat this app are: HTML, CSS, JavaScript, and Open Weather API.
+The technologies I used to creat this app are: HTML, BootStrap, CSS, JQuery JavaScript, and Open Weather API.
 
 ## Functionality
 
