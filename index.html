@@ -15,7 +15,34 @@
             <link rel="stylesheet" href="style.css">
         </head>
             <body>
-           
+                <!--Jumbotron WITH Title-->
+                <div class="jumbotron container-fluid mt-2 text-center p-2" style="background-color:#404040 ;color: white;">
+                    <h1> <strong>Global Weather App</strong></h1>
+                </div>
+
+                    <div class="container">
+
+                        <!--City Search-->
+                        <div class="row">
+
+                            <div class="col-sm-4 bg-light">
+
+                                <!--Input Section-->
+                                <h4 class="pt-1"><strong>Enter Desired City:</strong></h4>
+
+                                <!--Input Box for City Name-->
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control"id="searchLocation" aria-label="Location Search" aria-describedby="searchButton">
+                                    <div class="input-group-append">
+                                        <button class=" btn bg-primary text-light" id="searchButton"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+
+                        <!--Search Location History-->
+                        <button class=" btn btn-primary" type="button" id="clearAll">Clear All Entries</button>
+                        <ul class="list-Locs"></ul>
+                    </div>
+                </div>
     <!--jQuery add on-->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
