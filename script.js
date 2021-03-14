@@ -36,13 +36,38 @@ function showWeather(event){
 
 //AJAX call
 function myWeather(city){
-    
+
     // URL to pull server data
     var openWeaURL= "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + APIKey;
     $.ajax({
         url:openWeaURL,
         method:"GET",
     }).then(function(response){
+
+        // Parse to show the desired location name, weather icon, and current weather conditions 
+        console.log(response);
+
+        // Server side Api for the icon display
+        var wIcon= response.weather[0].icon;
+        var cardIconurl="https://openweathermap.org/img/wn/"+wIcon +"@2x.png";
+
+        // Date format syntax was used from: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+        var date=new Date(response.dt*1000).toLocaleDateString();
+
+        // Get the name of the location and show the date plus icon
+        $(currentLocation).html(response.name +"("+date+")" + "<img src="+cardIconurl+">");
+
+        // parse to show the current temperature and convert to fahrenheit
+        var tempFahr = (response.main.temp - 273.15) * 1.80 + 32;
+        $(currentTemp).html((tempFahr).toFixed(2)+"&#8457");
+
+        // Show Humidity
+        $(currentHum).html(response.main.humidity+"%");
+
+        //Display Wind speed and convert to MPH
+        var wSpeed=response.wind.speed;
+        var wsmph=(wSpeed*2.237).toFixed(1);
+        $(currentWindSpeed).html(wsmph+"MPH");
     
 
 
