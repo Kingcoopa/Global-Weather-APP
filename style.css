@@ -14,8 +14,8 @@ ul {
     list-style: none;
 }
 
-.forecast{
-    
+.forecast p{
+    contain: content;
     font-size: 1em;
 }
 
@@ -23,6 +23,6 @@ span{
     font-size: 1em;
 }
 li:hover{
-    background-color: lightslategray;
+    background-color: rgb(204, 91, 125);
     text-decoration: underline;
 }
