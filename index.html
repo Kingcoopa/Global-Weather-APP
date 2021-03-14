@@ -42,7 +42,16 @@
                         <button class=" btn btn-primary" type="button" id="clearAll">Clear All Entries</button>
                         <ul class="list-Locs"></ul>
                     </div>
-                </div>
+                        <div class="col-sm-8">
+                            <div class="row ml-2 border border-dark rounded">
+                                <div class="col-sm-12" id="current-weather">
+                                    <h3 class="city-name mb-1 mt-2 bolder" id="currentLoc"></h3>
+                                    <p>Temperature:<span class="current" id="temp"></span></p>
+                                    <p>Humidity:<span class="current" id="hum"></span></p> 
+                                    <p>Wind Speed:<span class="current" id="windSpeed"></span></p>
+                                    <p>UV index:<span class="current bg-danger rounded py-2 px-2 text-white" id="uvIndx"></span></p> 
+                                </div>
+                            </div>
     <!--jQuery add on-->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
