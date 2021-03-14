@@ -52,10 +52,10 @@ function myWeather(city){
         var cardIconurl="https://openweathermap.org/img/wn/"+wIcon +"@2x.png";
 
         // Date format syntax was used from: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
-        var date=new Date(response.dt*1000).toLocaleDateString();
+        var currentDate=new Date(response.dt*1000).toLocaleDateString();
 
         // Get the name of the location and show the date plus icon
-        $(currentLocation).html(response.name +"("+date+")" + "<img src="+cardIconurl+">");
+        $(currentLocation).html(response.name +"("+ currentDate+")" + "<img src="+cardIconurl+">");
 
         // parse to show the current temperature and convert to fahrenheit
         var tempFahr = (response.main.temp - 273.15) * 1.80 + 32;
