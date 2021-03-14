@@ -64,12 +64,82 @@ function myWeather(city){
         // Show Humidity
         $(currentHum).html(response.main.humidity+"%");
 
-        //Display Wind speed and convert to MPH
+        // Show wind speed with mph conversion
         var wSpeed=response.wind.speed;
         var wsmph=(wSpeed*2.237).toFixed(1);
         $(currentWindSpeed).html(wsmph+"MPH");
-    
 
+        // Show UV Index by geo-coord with appID and coordinates with a UV Query with in a function
+        uvDex(response.coord.lon,response.coord.lat);
+        forecast(response.id);
+        if(response.cod==200){
+            searchedLocations=JSON.parse(localStorage.getItem("cityname"));
+            console.log(searchedLocations);
+            if (searchedLocations==null){
+                searchedLocations=[];
+                searchedLocations.push(city.toUpperCase()
+                );
+                localStorage.setItem("cityname",JSON.stringify(searchedLocations));
+                addToList(city);
+            }
+            else {
+                if(find(city)>0){
+                    searchedLocations.push(city.toUpperCase());
+                    localStorage.setItem("cityname",JSON.stringify(searchedLocations));
+                    addToList(city);
+                }
+            }
+        }
+
+    });
+}
+
+// Function to pull UV Index Data
+function uvDex(ln,lt){
+
+    //UV URL
+    var uvURL="https://api.openweathermap.org/data/2.5/uvi?appid="+ APIKey+"&lat="+lt+"&lon="+ln;
+    $.ajax({
+            url:uvURL,
+            method:"GET"
+            }).then(function(response){
+                $(currentUvindex).html(response.value);
+            });
+}
+
+
+// Add location to search history dynamically
+function addList(c){
+    var list= $("<li>"+c.toUpperCase()+"</li>");
+    $(list).attr("class","list-Locs-item");
+    $(list).attr("data-value",c.toUpperCase());
+    $(".list-Locs").append(list);
+}
+
+// Show previously rendered data when stored location is clicked in the history section
+function pastSearches(event){
+    var pastLI=event.target;
+    if (event.target.matches("li")){
+        city=pastLI.textContent.trim();
+        myWeather(city);
+    }
+
+}
+
+// Render function
+function showlastLoc(){
+    $("ul").empty();
+    var searchedLocations = JSON.parse(localStorage.getItem("cityname"));
+    if(searchedLocations!==null){
+        searchedLocations=JSON.parse(localStorage.getItem("cityname"));
+        for(i=0; i<searchedLocations.length;i++){
+            addList(searchedLocations[i]);
+        }
+        city=searchedLocations[i-1];
+        myWeather(city);
+    }
+
+}
 
 //Clear History
 function clear(event){
@@ -79,4 +149,10 @@ function clear(event){
     document.location.reload();
 
 }
+
+//Click Handlers
+$("#searchButton").on("click",showWeather);
+$(document).on("click",pastSearches);
+$(window).on("load",showlastLoc);
+$("#clearAll").on("click",clear);
 
