@@ -49,13 +49,13 @@ function myWeather(city){
 
         // Server side Api for the icon display
         var wIcon= response.weather[0].icon;
-        var cardIconurl="https://openweathermap.org/img/wn/"+wIcon +"@2x.png";
+        var weIconUrl="https://openweathermap.org/img/wn/"+wIcon +"@2x.png";
 
         // Date format syntax was used from: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
         var currentDate=new Date(response.dt*1000).toLocaleDateString();
 
         // Get the name of the location and show the date plus icon
-        $(currentLocation).html(response.name +"("+ currentDate+")" + "<img src="+cardIconurl+">");
+        $(currentLocation).html(response.name +"("+currentDate+")" + "<img src="+weIconUrl+">");
 
         // parse to show the current temperature and convert to fahrenheit
         var tempFahr = (response.main.temp - 273.15) * 1.80 + 32;
@@ -80,13 +80,13 @@ function myWeather(city){
                 searchedLocations.push(city.toUpperCase()
                 );
                 localStorage.setItem("cityname",JSON.stringify(searchedLocations));
-                addToList(city);
+                addList(city);
             }
             else {
                 if(find(city)>0){
                     searchedLocations.push(city.toUpperCase());
                     localStorage.setItem("cityname",JSON.stringify(searchedLocations));
-                    addToList(city);
+                    addList(city);
                 }
             }
         }
@@ -107,6 +107,30 @@ function uvDex(ln,lt){
             });
 }
 
+// Show future 5 day forecast
+function forecast(LocID){
+    var futureForecastURL="https://api.openweathermap.org/data/2.5/forecast?id="+LocID+"&appid="+APIKey;
+    $.ajax({
+        url:futureForecastURL,
+        method:"GET"
+    }).then(function(response){
+        
+        for (i=0;i<5;i++){
+            var date= new Date((response.list[((i+1)*8)-1].dt)*1000).toLocaleDateString();
+            var weatherIcon= response.list[((i+1)*8)-1].weather[0].icon;
+            var iconurl="https://openweathermap.org/img/wn/"+weatherIcon+".png";
+            var tempCel= response.list[((i+1)*8)-1].main.temp;
+            var tempFahr=(((tempCel-273.5)*1.80)+32).toFixed(2);
+            var humidity= response.list[((i+1)*8)-1].main.humidity;
+        
+            $("#fiveDay"+i).html(date);
+            $("#fivedayIcon"+i).html("<img src="+iconurl+">");
+            $("#fivedayTemp"+i).html(tempFahr+"&#8457");
+            $("#fivedayHum"+i).html(humidity+"%");
+        }
+        
+    });
+}
 
 // Add location to search history dynamically
 function addList(c){
