@@ -14,6 +14,10 @@ https://kingcoopa.github.io/Global-Weather-APP/
 
 The technologies I used to creat this app are: HTML, BootStrap, CSS, JQuery JavaScript, and Open Weather API.
 
+## Sites of Sources
+
+Date function syntax was used from: developer.mozilla.org. Active Link: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+
 ## Functionality
 
 Global-Weather-App is functional on the following browsers:
