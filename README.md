@@ -4,7 +4,7 @@ This application was created with the purpose of giving the global traveler acce
 
 ## The App in Action
 
-![Weather Dashboard (1)](https://user-images.githubusercontent.com/69878838/111196178-61a7b680-8593-11eb-9f25-e2dfd2c861d2.gif)
+![Weather Dashboard (2)](https://user-images.githubusercontent.com/69878838/111199606-36bf6180-8597-11eb-9da9-a68820179ea6.gif)
 
 #### Deployable Link:
 https://kingcoopa.github.io/Global-Weather-APP/
