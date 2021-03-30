@@ -25,10 +25,10 @@ Global-Weather-App is functional on the following browsers:
 * Google Chrome
 * Firefox
 * Microsoft Edge
-
+* 
 ## License
 
-MIT License
+![License badge](https://img.shields.io/badge/License-MIT-green)
 
 Copyright (c) 2021 Wilkinson John Williams
 
