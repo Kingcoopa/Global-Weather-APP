@@ -31,3 +31,8 @@ Global-Weather-App is functional on the following browsers:
 MIT License
 
 Copyright (c) 2021 Wilkinson John Williams
+
+
+### Contact Me
+
+<a href="mailto:srawilkinsonwilliams@yahoo.com"> Wilkinson Williams </a>
